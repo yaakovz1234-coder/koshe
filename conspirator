@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>חיפוש בטוח ומסונן</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .search-container {
+            max-width: 600px;
+            width: 100%;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            text-align: center;
+            margin-top: 50px;
+        }
+        h1 {
+            color: #202124;
+            font-size: 26px;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            color: #5f6368;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+        /* אזור הזנת השם */
+        .name-section {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #f1f3f4;
+        }
+        .name-input {
+            padding: 10px 15px;
+            font-size: 16px;
+            border: 1px solid #dadce0;
+            border-radius: 8px;
+            width: 70%;
+            max-width: 300px;
+            outline: none;
+            transition: border-color 0.2s;
+            text-align: center;
+        }
+        .name-input:focus {
+            border-color: #1a73e8;
+        }
+        .welcome-message {
+            font-size: 18px;
+            color: #1a73e8;
+            font-weight: bold;
+            margin-top: 15px;
+            display: none; /* יופיע רק אחרי הקלדת שם */
+        }
+        /* אזור החיפוש של גוגל */
+        .gcse-search-box {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="search-container">
+        <h1>מנוע חיפוש כשר ומסונן</h1>
+        <div class="subtitle">תוצאות החיפוש מוגנות ומסוננות באמצעות SafeSearch</div>
+        
+        <!-- חלק הזנת השם -->
+        <div class="name-section">
+            <input type="text" id="userNameInput" class="name-input" placeholder="הכנס את השם שלך כאן..." oninput="updateWelcomeMessage()">
+            <div id="welcomeGreeting" class="welcome-message"></div>
+        </div>
+
+        <!-- מנוע החיפוש המותאם אישית שלך עם ה-ID של גוגל -->
+        <div class="gcse-search"></div>
+    </div>
+
+    <!-- סקריפט גוגל הרשמי עם ה-ID שלך -->
+    <script async src="https://cse.google.com/cse.js?cx=c2911777185354528"></script>
+
+    <!-- סקריפט לניהול השם הדינמי -->
+    <script>
+        function updateWelcomeMessage() {
+            var input = document.getElementById('userNameInput');
+            var greeting = document.getElementById('welcomeGreeting');
+            
+            if (input.value.trim() !== "") {
+                greeting.innerText = "שלום, " + input.value + "! מה ברצונך לחפש היום?";
+                greeting.style.display = "block";
+            } else {
+                greeting.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+</html>
